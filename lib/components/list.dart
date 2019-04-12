@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:my_app/views/detail.dart';
-
 class List extends StatefulWidget {
   @override
   _ListState createState() => _ListState();
@@ -28,6 +27,9 @@ class _ListState extends State<List> {
     } catch (e) {
       result = 'Failed';
     }
+    if(!mounted){
+      return;
+    }
     setState(() {
       data = result;
     });
@@ -38,9 +40,12 @@ class _ListState extends State<List> {
     super.initState();
     _getData();
   }
-
-  void _onTap(String id) {
-    Navigator.of(context).push(new PageRouteBuilder(
+  @override
+  void dispose() {
+    super.dispose();
+  }
+  void  _onTap (String id) async {
+ await Navigator.of(context).push(new PageRouteBuilder(
         opaque: false,
         pageBuilder: (BuildContext context, _, __) {
           return DetailPage(id);

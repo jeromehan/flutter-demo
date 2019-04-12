@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/components/parent.dart';
 class ThirdPage extends StatefulWidget {
   @override
   _ThirdPageState createState() => _ThirdPageState();
@@ -11,7 +12,7 @@ class _ThirdPageState extends State<ThirdPage> {
       appBar: AppBar(
         title: Text('我的'),
       ),
-      body: Center(child: Text('我的')
+      body: Center(child: Parent()
       ),
     );
   }
