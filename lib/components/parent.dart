@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:my_app/common/eventBus.dart';
 
@@ -59,14 +58,12 @@ class _ChildTwoState extends State<ChildTwo> {
   void firedA() async {
    await widget.callback(text);
   }
-
   void firedB() {
-    eventBus.fire(MyEvent('我是2传给1'));
+      eventBus.fire(MyEvent('我是2传给1'));
   }
   @override
   void dispose() {
     super.dispose();
-    eventBus.destroy();
   }
   @override
   Widget build(BuildContext context) {
@@ -88,8 +85,8 @@ class _ChildOneState extends State<ChildOne> {
   var data;
   @override
   void initState() {
-    super.initState();
     eventBus.on<MyEvent>().listen((MyEvent data) => show(data.text));
+    super.initState();
   }
   void show(String val) {
     if (!mounted) {
@@ -102,7 +99,7 @@ class _ChildOneState extends State<ChildOne> {
   @override
   void dispose() {
     super.dispose();
-    eventBus.destroy();
+    // eventBus.destroy();
   }
   @override
   Widget build(BuildContext context) {

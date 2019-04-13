@@ -58,7 +58,7 @@ class _SecondPageState extends State<SecondPage> {
   Future<Null> _selectDate(BuildContext context) async{
     final DateTime _picked =await showDatePicker(
       context: context,
-      initialDate: _dateTime,
+      initialDate: new DateTime.now(),
       firstDate: DateTime(2016),
       lastDate: DateTime(2050)
     );
